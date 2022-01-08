@@ -33,13 +33,11 @@
 
 - name: Clear IPTables filter
   shell: iptables -F; iptables -X
-  when: web_docker_img.changed or db_docker_img.changed
 
 - name: Restart Docker
   service:
     name: docker
     state: restarted
-  when: web_docker_img.changed or db_docker_img.changed
 
 # tasks file for run docker container
 - name: Run Web server container
